@@ -1,13 +1,12 @@
 import pytest
-from my_app import create_app # Import your app factory
+from app import app as flask_app # Import your app instance directly
 
 @pytest.fixture()
 def app():
-    app = create_app()
-    app.config.update({
+    flask_app.config.update({
         "TESTING": True,
     })
-    yield app
+    yield flask_app
 
 @pytest.fixture()
 def client(app):
