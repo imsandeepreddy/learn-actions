@@ -1,0 +1,13 @@
+name: Trigger Claude PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  call-claude-review:
+    # Points to your public central repository template
+    uses: YOUR_GITHUB_USERNAME/central-ci-templates/.github/workflows/claude-pr-review-template.yml@main
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      TARGET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub
