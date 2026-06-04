@@ -6,6 +6,10 @@ on:
 
 jobs:
   call-claude-review:
+    # Explicitly grant write access to pull requests for this run
+    permissions:
+      pull-requests: write
+      contents: read
     # Points to your public central repository template
     uses: imsandeepreddy/central-actions/.github/workflows/claude-pr-review-template.yml@main
     secrets:
